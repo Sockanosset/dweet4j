@@ -1,0 +1,15 @@
+dweet4j will allow you to easily connect and communicate to the dweet webservice at: http://dweet.io/
+
+This library depends on some well known third part libraries:
+
+commons-logging-1.2.jar
+httpasyncclient-4.0.1.jar
+httpclient-4.3.4.jar
+httpcore-4.3.2.jar
+httpcore-nio-4.3.2.jar
+httpmime-4.3.4.jar
+json-20140107.jar
+
+Make sure these are in your project build path.
+
+Review the DweetTest.java file to quickly test the dweet.io process.
