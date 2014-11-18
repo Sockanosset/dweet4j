@@ -109,6 +109,11 @@ public abstract class DweetCommandAbstract
 	public String getCompleteUrl() {
 		return completeUrl;
 	}
+	
+	public boolean validateURL()
+	{
+		return !completeUrl.contains(" ");
+	}
 
 	/**
 	 * Get the dweet.io data that was requested or returned

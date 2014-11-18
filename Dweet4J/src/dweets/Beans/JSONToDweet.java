@@ -16,7 +16,9 @@ package dweets.Beans;
  * limitations under the License.
  */
 
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -66,24 +68,42 @@ public class JSONToDweet
 		/* Process a succeeded JSON response */
 		final DweetDataBean dweet = new DweetDataBean(json.get(DweetKeys.THIS).toString(), json.get(DweetKeys.BY).toString(), json.get(DweetKeys.THE).toString());
 		
-		final JSONArray with = json.optJSONArray(DweetKeys.WITH);
-		
 		// The 'with' key word can be either an JSON array for a read or just a JSON object for a write - test for null to find out
 		// Must have been a read return - get all the data
-		if (with != null)
+		if (json.get(DweetKeys.WITH).getClass().equals(JSONArray.class))
 		{
+			final JSONArray with = json.getJSONArray(DweetKeys.WITH);
+			
 			for (int i=0;i<with.length();i++)
             {
 				final JSONObject data = with.getJSONObject(i);
 				final DataBean dataBean = new DataBean(data.get(DweetKeys.THING).toString(), data.get(DweetKeys.CREATED).toString());
-				final JSONObject content = data.getJSONObject(DweetKeys.CONTENT);
 				
-            	final Iterator<?> it = content.keys();
+				final JSONObject content = data.getJSONObject(DweetKeys.CONTENT);
+				final Iterator<?> it = content.keys();
             	while(it.hasNext())
             	{
             		String key = (String) it.next();
-            		dataBean.getContent().put(key, content.get(key));
+            		
+            		// See if the value is a JSON object - if so create a map for that data
+            		if (content.get(key).getClass().equals(JSONObject.class))
+            		{
+            			final Map<String, Object> contentMap = new HashMap<String, Object>();
+            			final JSONObject contentArray = content.getJSONObject(key);
+            			
+            			final Iterator<?> its = contentArray.keys();
+            			while(its.hasNext())
+                    	{
+            				String keys = (String) its.next();
+            				contentMap.put(keys, contentArray.get(keys));
+                    	}
+            					
+            			dataBean.getContent().put(key, contentMap);
+            		
+            		} else
+            			dataBean.getContent().put(key, content.get(key));
             	}
+            	
             	dweet.addData(dataBean);
             }
 			

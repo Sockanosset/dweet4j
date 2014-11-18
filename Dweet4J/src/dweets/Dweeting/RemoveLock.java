@@ -92,6 +92,11 @@ public class RemoveLock extends DweetCommandAbstract
 			log.debug("To remove a lock, the lock must be supplied");
 			throw new DweetException("To remove a lock, the lock must be supplied");
 		}
+		if (!this.validateURL())
+		{
+			log.debug("Remove any spaces from the URL: "+this.validateURL());
+			throw new DweetException("Remove any spaces from the URL: "+this.validateURL());
+		}
 		if (this.key == null)
 		{
 			log.debug("To remove a lock, the key must be supplied");
