@@ -85,6 +85,11 @@ public class ReceiveAllData extends DweetCommandAbstract
 			log.debug("A thing name must be added");
 			throw new DweetException("A thing name must be added");
 		}
+		if (!this.validateURL())
+		{
+			log.debug("Remove any spaces from the URL: "+this.validateURL());
+			throw new DweetException("Remove any spaces from the URL: "+this.validateURL());
+		}
 		
 		try
 		{

@@ -24,7 +24,7 @@ import dweets.Dweeting.SendData;
 
 public class DweetTest
 {
-	private static final String THING_NAME = "MyFirstTest"; // Modify as needed
+	private static final String THING_NAME = "MyTest"; // Modify as needed
 	private static final String THING_KEY = null; // If your thing is locked, add the key here 
 	private static final boolean SSL = true; // Better to have an SSL connection
 	

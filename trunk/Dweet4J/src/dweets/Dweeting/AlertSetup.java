@@ -107,19 +107,21 @@ public class AlertSetup extends DweetCommandAbstract
 			log.debug("A thing name must be added");
 			throw new DweetException("A thing name must be added");
 		}
-		
+		if (!this.validateURL())
+		{
+			log.debug("Remove any spaces from the URL: "+this.validateURL());
+			throw new DweetException("Remove any spaces from the URL: "+this.validateURL());
+		}
 		if (this.key == null)
 		{
 			log.debug("To setup an alert, the thing must be locked and have a key");
 			throw new DweetException("To setup an alert, the thing must be locked and have a key");
 		}
-		
 		if (this.recipients == null)
 		{
 			log.debug("To setup an alert, the thing must have at lease 1 email recipient");
 			throw new DweetException("To setup an alert, the thing must have at lease 1 email recipient");
 		}
-		
 		if (this.condition == null)
 		{
 			log.debug("To setup an alert, the thing must have a properly formatted condition");

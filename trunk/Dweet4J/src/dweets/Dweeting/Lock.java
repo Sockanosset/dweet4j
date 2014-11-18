@@ -92,6 +92,11 @@ public class Lock extends DweetCommandAbstract
 			log.debug("A thing name must be added");
 			throw new DweetException("A thing name must be added");
 		}
+		if (!this.validateURL())
+		{
+			log.debug("Remove any spaces from the URL: "+this.validateURL());
+			throw new DweetException("Remove any spaces from the URL: "+this.validateURL());
+		}
 		if (this.lock == null)
 		{
 			log.debug("To Lock a thing a lock must be included - visit https://dweet.io/locks to obtain a lock");

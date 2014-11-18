@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="C:/Users/office/workspaceJuno/Dweet4J/Dependencies/commons-logging-1.2.jar" sourcepath="Dependencies/commons-logging-1.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/office/workspaceJuno/Dweet4J/Dependencies/httpasyncclient-4.0.1.jar" sourcepath="Dependencies/httpasyncclient-4.0.1-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/office/workspaceJuno/Dweet4J/Dependencies/httpclient-4.3.4.jar" sourcepath="Dependencies/httpclient-4.3.4-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/office/workspaceJuno/Dweet4J/Dependencies/httpcore-4.3.2.jar" sourcepath="Dependencies/httpcore-4.3.2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/office/workspaceJuno/Dweet4J/Dependencies/httpcore-nio-4.3.2.jar" sourcepath="Dependencies/httpcore-nio-4.3.2-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/office/workspaceJuno/Dweet4J/Dependencies/httpmime-4.3.4.jar" sourcepath="Dependencies/httpmime-4.3.4-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/office/workspaceJuno/Dweet4J/Dependencies/json-20140107.jar" sourcepath="Dependencies/json-20140107-sources.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

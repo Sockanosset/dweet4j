@@ -117,8 +117,6 @@ public class SendData extends DweetCommandAbstract
 			log.debug("A thing name must be added");
 			throw new DweetException("A thing name must be added");
 		}
-		
-		// Nothing to send
 		if (data.size() == 0)
 		{
 			log.debug("No Data being send to the server");
@@ -126,6 +124,12 @@ public class SendData extends DweetCommandAbstract
 		}
 		
 		addDataToUrl();
+		
+		if (!this.validateURL())
+		{
+			log.debug("Remove any spaces from the URL: "+this.validateURL());
+			throw new DweetException("Remove any spaces from the URL: "+this.validateURL());
+		}
 		
 		if (!this.dweetPayloadCheck())
 		{

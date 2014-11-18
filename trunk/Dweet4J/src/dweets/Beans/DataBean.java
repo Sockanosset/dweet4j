@@ -95,6 +95,7 @@ public class DataBean implements Serializable
 		return content;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public String printBean()
 	{
 		final StringBuilder str = new StringBuilder();
@@ -102,8 +103,18 @@ public class DataBean implements Serializable
 		str.append(" \"").append(DweetKeys.THING).append("\": \"").append(thing).append("\",\r\n");
 		str.append(" \"").append(DweetKeys.CREATED).append("\": \"").append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(created)).append("\",\r\n");
 		str.append(" \"").append(DweetKeys.CONTENT).append(": {");
+		
 		for (Entry<String, Object> e : content.entrySet())
-			str.append("\r\n   \"").append(e.getKey()).append("\": ").append(e.getValue()).append(",");
+		{
+			if (e.getValue() instanceof Map<?, ?>)
+			{
+				str.append("\r\n   \"").append(e.getKey()).append("\" {");
+				for (Entry<String, Object> i : ((Map<String, Object>) e.getValue()).entrySet())
+					str.append("\r\n     \"").append(i.getKey()).append("\": ").append(i.getValue()).append(",");
+				str.append("\r\n  }");
+			} else
+				str.append("\r\n   \"").append(e.getKey()).append("\": ").append(e.getValue()).append(",");
+		}
 		
 		str.deleteCharAt(str.length() - 1);
 		str.append("\r\n}");
